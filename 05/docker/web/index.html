@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10162b">
+  <title>Docker 微服務實驗室｜任務管理平台</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="page-glow page-glow-one"></div>
+  <div class="page-glow page-glow-two"></div>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-icon">◇</span><span>DOCKER<span class="brand-light">/LAB</span></span></div>
+      <span class="environment"><span class="signal-dot"></span> LOCAL DEVELOPMENT</span>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="spark">✦</span> CONTAINERIZED MICROSERVICES <span class="hero-line"></span> 2026</div>
+          <h1>讓每個服務，<br><span class="gradient-text">各司其職。</span></h1>
+          <p>透過一個任務管理介面，實際體驗 Nginx 反向代理、Node.js API、PostgreSQL 資料儲存與 Python 報表服務如何協同工作。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#tasks">開始管理任務 <span aria-hidden="true">↗</span></a>
+            <a class="button button-subtle" href="#architecture">探索系統架構 <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div class="visual" aria-label="容器架構視覺圖">
+          <div class="visual-orbit orbit-a"></div><div class="visual-orbit orbit-b"></div>
+          <div class="core"><span class="core-icon">◈</span><strong>DOCKER</strong><small>COMPOSE</small></div>
+          <span class="visual-tag tag-a">NGINX</span><span class="visual-tag tag-b">NODE.JS</span><span class="visual-tag tag-c">POSTGRES</span><span class="visual-tag tag-d">PYTHON</span>
+          <span class="visual-caption">4 CONTAINERS · 1 NETWORK</span>
+        </div>
+      </section>
+
+      <section class="section" aria-label="系統即時統計">
+        <div class="section-heading"><div><span class="section-kicker">OVERVIEW</span><h2>系統即時總覽</h2></div><span id="updated-at" class="small-muted">等待連線…</span></div>
+        <div class="stats-grid">
+          <article class="stat-card"><span class="stat-label">總任務數 <span>↗</span></span><strong id="total-count">—</strong><span class="stat-foot">資料來自 PostgreSQL</span></article>
+          <article class="stat-card"><span class="stat-label">已完成 <span>✓</span></span><strong id="done-count">—</strong><span class="stat-foot">Node.js API 即時查詢</span></article>
+          <article class="stat-card"><span class="stat-label">待完成 <span>◷</span></span><strong id="pending-count">—</strong><span class="stat-foot">每次更新自動計算</span></article>
+          <article class="stat-card stat-highlight"><span class="stat-label">完成進度 <span>◎</span></span><strong><span id="rate-count">—</span><small>%</small></strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div></article>
+        </div>
+      </section>
+
+      <section id="tasks" class="section workspace">
+        <div class="section-heading"><div><span class="section-kicker">INTERACTIVE DEMO</span><h2>任務管理工作台</h2></div><span class="pill pill-outline">CRUD · PostgreSQL</span></div>
+        <div class="workspace-grid">
+          <div class="panel tasks-panel">
+            <div class="panel-title"><h3>我的學習任務</h3><span id="task-list-count" class="small-muted"></span></div>
+            <form id="task-form" class="task-form">
+              <label class="sr-only" for="task-input">新增任務名稱</label>
+              <input id="task-input" type="text" placeholder="輸入新的 Docker 練習任務…" maxlength="120" required autocomplete="off">
+              <button id="add-button" class="add-button" type="submit">＋ 新增</button>
+            </form>
+            <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+            <ul id="task-list" class="task-list"><li class="task-placeholder">正在載入任務…</li></ul>
+            <p class="panel-footnote">任務新增、更新與刪除皆透過 API 寫入資料庫，重啟容器後資料仍會保留。</p>
+          </div>
+          <div class="panel status-panel">
+            <div class="panel-title"><h3>微服務連線狀態</h3><button id="refresh-button" class="text-button" type="button">重新整理 ↻</button></div>
+            <div class="service-list">
+              <div class="service"><div class="service-icon nginx-icon">N</div><div class="service-description"><strong>Nginx</strong><span>Web server / Reverse proxy</span></div><span class="status-badge online">運作中</span></div>
+              <div class="service"><div class="service-icon node-icon">JS</div><div class="service-description"><strong>Node.js</strong><span>REST API · Port 3000</span></div><span id="api-status" class="status-badge pending">檢查中</span></div>
+              <div class="service"><div class="service-icon db-icon">DB</div><div class="service-description"><strong>PostgreSQL</strong><span>Persistent database · 5432</span></div><span id="db-status" class="status-badge pending">檢查中</span></div>
+              <div class="service"><div class="service-icon python-icon">Py</div><div class="service-description"><strong>Python</strong><span>Report service · Port 8000</span></div><span id="report-status" class="status-badge pending">檢查中</span></div>
+            </div>
+            <div id="report-message" class="report-message">等待 Python 微服務回傳分析結果。</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="architecture" class="section architecture-section">
+        <div class="section-heading"><div><span class="section-kicker">ARCHITECTURE</span><h2>請求如何穿過容器？</h2></div></div>
+        <div class="flow-diagram">
+          <div class="flow-node"><small>01 · CLIENT</small><strong>瀏覽器</strong><span>localhost:8080</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node"><small>02 · GATEWAY</small><strong>Nginx</strong><span>靜態網頁 / 反向代理</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-split">
+            <div class="flow-node node-small"><small>03A · API</small><strong>Node.js</strong><span>←→ PostgreSQL</span></div>
+            <div class="flow-node node-small"><small>03B · REPORT</small><strong>Python</strong><span>→ Node.js API</span></div>
+          </div>
+        </div>
+        <div class="architecture-note"><span class="note-icon">ⓘ</span>資料庫與內部 API 不直接公開主機埠；外部只透過 Nginx 的 <code>8080</code> 埠進入服務。</div>
+      </section>
+    </main>
+    <footer><span>DOCKER / LAB <span class="footer-divider">·</span> Microservices Practice</span><span>NGINX + NODE.JS + POSTGRESQL + PYTHON</span></footer>
+  </div>
+</body>
+</html>
