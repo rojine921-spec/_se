@@ -1,6 +1,12 @@
 # 第七週作業：待辦事項管理網站與三種測試
 
-本專案為獨立開發的待辦事項管理網站，**不使用大學校務系統**。使用 Python Flask 提供網站及 Web API，以 SQLite 儲存待辦事項，並透過 pytest 和 Playwright 進行測試。
+# 🤖 AI 工具使用說明
+
+**本專案有使用 AI 工具 ChatGPT 協助開發。**
+
+- **使用的 AI 工具：** ChatGPT（OpenAI）
+- **AI 協助內容：** 網站主題發想、功能規劃、HTML／CSS／JavaScript 程式撰寫、版面與視覺美化、問題排查，以及 Cloudflare Pages 部署流程說明。
+- **實作方式：** 將網站程式碼上傳 GitHub，連接 Cloudflare Pages 部署，並整理網站成果截圖與 README 說明。
 
 ## 一、網站功能
 
