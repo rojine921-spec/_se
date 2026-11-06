@@ -1,6 +1,11 @@
 # 模擬大學校務系統（習題 2）
 
-使用 **Python + Flask + SQLite + HTML/CSS** 自行製作的課堂練習，沒有爬蟲，也不會連線到任何學校的校務平台。所有帳號、人名、課程均為虛構資料。
+**本專案有使用 AI 工具 ChatGPT 協助開發。**
+
+- **使用的 AI 工具：** ChatGPT（OpenAI）
+- **AI 協助內容：** 網站主題發想、功能規劃、HTML／CSS／JavaScript 程式撰寫、版面與視覺美化、問題排查，以及 Cloudflare Pages 部署流程說明。
+- **實作方式：** 將網站程式碼上傳 GitHub，連接 Cloudflare Pages 部署，並整理網站成果截圖與 README 說明。
+
 
 ## 功能
 
