@@ -1,12 +1,10 @@
-# 🤖 AI 工具使用說明
+# 第 9 週｜理財日常：智慧記帳與消費分析網站
 
 **本專案有使用 AI 工具 ChatGPT 協助開發。**
 
 - **使用的 AI 工具：** ChatGPT（OpenAI）
 - **AI 協助內容：** 網站主題發想、功能規劃、HTML／CSS／JavaScript 程式撰寫、版面與視覺美化、問題排查，以及 Cloudflare Pages 部署流程說明。
 - **實作方式：** 將網站程式碼上傳 GitHub，連接 Cloudflare Pages 部署，並整理網站成果截圖與 README 說明。
-
-# 第 9 週｜理財日常：智慧記帳與消費分析網站
 
 這是一個使用 **HTML、CSS、JavaScript** 製作的記帳網站，可新增收入與支出、查看每月結餘與消費分類分析，並透過 **Cloudflare Pages** 公開部署。無需安裝套件或建立後端伺服器。
 
