@@ -2,6 +2,13 @@
 
 一個以 C 語言撰寫、`curl` 風格命令列的 HTTP 用戶端工具。
 
+**本專案有使用 AI 工具 ChatGPT 協助開發。**
+
+- **使用的 AI 工具：** ChatGPT（OpenAI）
+- **AI 協助內容：** 網站主題發想、功能規劃、HTML／CSS／JavaScript 程式撰寫、版面與視覺美化、問題排查，以及 Cloudflare Pages 部署流程說明。
+- **實作方式：** 將網站程式碼上傳 GitHub，連接 Cloudflare Pages 部署，並整理網站成果截圖與 README 說明。
+
+
 ## 專案簡介
 
 此程式模仿 curl 的命令列介面與輸出樣式，透過原始 Winsock socket 實作 HTTP/1.1 請求，
