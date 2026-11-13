@@ -1,0 +1,12 @@
+{
+  "name": "expense-tracker-utils-rojine921",
+  "version": "1.0.0",
+  "description": "Reusable income, expense, balance, category and CSV utilities for the Cloudflare Pages expense tracker",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "files": ["src", "README.md", "LICENSE"],
+  "scripts": {"test": "node --test"},
+  "keywords": ["expense", "tracker", "finance", "cloudflare", "csv"],
+  "license": "MIT",
+  "engines": {"node": ">=18"}
+}
